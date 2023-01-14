@@ -1,0 +1,42 @@
+<div class="mb-4 pb-4 border-b-2 border-black">
+    <div class="flex justify-between">
+        <div class="flex w-32 items-center">
+            <mat-label class="flex-1">Sort by</mat-label>
+            <mat-select class="flex-1" value="1">
+                <mat-option (click)="onUpdateSort('desc')" value="1"
+                    >Desc</mat-option
+                >
+                <mat-option (click)="onUpdateSort('asc')" value="2"
+                    >Asc</mat-option
+                >
+            </mat-select>
+        </div>
+        <div class="flex items-center w-40">
+            <mat-select class="flex-1" value="-1">
+                <mat-option (click)="onUpdateCategory(null)" value="-1"
+                    >All Categories</mat-option
+                >
+                <mat-option
+                    *ngFor="let category of categories"
+                    (click)="onUpdateCategory(category)"
+                    value="1"
+                    >{{ category }}</mat-option
+                >
+            </mat-select>
+        </div>
+        <div class="flex items-center w-24">
+            <mat-label class="flex-1">Show</mat-label>
+            <mat-select class="flex-1" value="1">
+                <mat-option (click)="onUpdatePerPage(6)" value="1"
+                    >6</mat-option
+                >
+                <mat-option (click)="onUpdatePerPage(12)" value="2"
+                    >12</mat-option
+                >
+                <mat-option (click)="onUpdatePerPage(24)" value="2"
+                    >24</mat-option
+                >
+            </mat-select>
+        </div>
+    </div>
+</div>

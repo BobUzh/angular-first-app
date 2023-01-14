@@ -1,0 +1,30 @@
+<div class="max-w-7xl mx-auto">
+    <div>
+        <app-product-header-filter
+            [categories]="categories"
+            (updateSort)="updateSort($event)"
+            (updatePerPage)="updatePerPage($event)"
+            (updateCategory)="updateCategory($event)"
+        ></app-product-header-filter>
+        <div class="products flex flex-wrap m-auto items-baseline">
+            <div
+                class="group product flex flex-col text-center max-w-sm basis-1/4 px-3"
+                *ngFor="let product of products"
+            >
+                <app-product
+                    (addToCart)="addToCart($event)"
+                    (showModal)="showModal($event)"
+                    [product]="product"
+                ></app-product>
+            </div>
+        </div>
+    </div>
+</div>
+<div
+    id="about"
+    class="about bg-gray-200 flex justify-center items-center py-28"
+>
+    <div class="about-wrapper w-1/2">
+        <app-about></app-about>
+    </div>
+</div>

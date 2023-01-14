@@ -1,0 +1,27 @@
+<div class="overflow-hidden relative">
+    <a [routerLink]="['product', product.id]">
+        <img class="max-h-52 m-auto" [src]="product.image" alt="" />
+    </a>
+    <div
+        class="cursor-pointer transition-all duration-500 absolute w-full py-1 bg-white group-hover:-translate-y-16 hover:bg-black hover:text-white"
+        (click)="onShowModal()"
+    >
+        Quick View
+    </div>
+</div>
+<div class="product-details my-4">
+    <p class="">{{ product.title }}</p>
+    <span class="w-5 h-1 border-b-2 border-black inline-block"></span>
+    <p class="font-semibold">{{ product.price | currency }}</p>
+    <div
+        class="transition-opaciti duration-500 opacity-0 group-hover:opacity-100"
+    >
+        <button
+            mat-flat-button
+            class="my-5 !w-full !bg-black !text-white"
+            (click)="onAddToCart()"
+        >
+            Add To Cart
+        </button>
+    </div>
+</div>

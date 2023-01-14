@@ -1,0 +1,78 @@
+<section
+    *ngIf="isShow"
+    @fadeIn
+    @fadeOut
+    class="z-20 w-96 fixed h-screen top-0 right-0 flex flex-col justify-between"
+>
+    <div
+        style="z-index: -1"
+        class="mask fixed left-0 right-0 top-0 bottom-0 bg-black opacity-20"
+    ></div>
+    <div
+        class="header bg-black text-white flex justify-center items-center h-[70px]"
+    >
+        <mat-icon
+            (click)="closeCart()"
+            class="absolute left-4 cursor-pointer"
+            aria-hidden="false"
+            fontIcon="chevron_right"
+        ></mat-icon>
+        <span class="text-xl font-semibold my-5">Cart</span>
+    </div>
+    <section
+        class="bg-white basis-full px-5 flex h-[calc(100vh-170px)] flex-col justify-between"
+    >
+        <ul class="overflow-y-scroll h-full scrollbar-hide">
+            <li *ngFor="let product of products" class="relative px-5">
+                <mat-icon
+                    (click)="removeProduct(product.id)"
+                    class="absolute -right-3 top-1 cursor-pointer !text-xs hover:scale-150"
+                    fontIcon="close"
+                ></mat-icon>
+                <div class="card flex h-28 pt-5 border-t-2 mb-5">
+                    <div class="img h-full flex-1">
+                        <img
+                            class="px-3 h-full"
+                            [src]="product?.image"
+                            alt=""
+                        />
+                    </div>
+                    <div class="info flex-1">
+                        <p class="font-bold text-gray-500 text-xs">
+                            {{ product.title | slice : 1 : 40 }}
+                        </p>
+                        <p class="font-semibold text-sm">
+                            {{ product.price | currency }}
+                        </p>
+                        <div class="quantity mt-2">
+                            <input
+                                (input)="updateQuantity($event, product.id)"
+                                class="px-2 pt-1 w-16 border-2 rounded-sm border-gray-400"
+                                type="number"
+                                min="1"
+                                [defaultValue]="product.quantity"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <section class="">
+            <div
+                data-hook="cart-widget-subtotal-title"
+                class="text-lg font-bold"
+            >
+                Subtotal
+            </div>
+            <div data-hook="cart-widget-total" class="font-extrabold text-xl">
+                {{ getTotal(products) | currency }}
+            </div>
+        </section>
+    </section>
+    <div class="bg-white flex justify-center items-center h-[100px] border-t-2">
+        <button class="w-3/4 bg-black text-xs mt-5 text-white py-3 m-auto">
+            View Cart
+        </button>
+    </div>
+</section>

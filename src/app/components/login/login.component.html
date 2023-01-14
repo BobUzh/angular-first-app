@@ -1,0 +1,80 @@
+<div class="py-5 h-100">
+    <div class="flex justify-center items-center h-100">
+        <div class="">
+            <div class="bg-black text-white" style="border-radius: 1rem">
+                <div class="p-5 text-center">
+                    <div class="mb-5 mt-4 pb-5">
+                        <h2 class="font-bold mb-2 uppercase">Login</h2>
+                        <p class="text-neutral-400 mb-5 text-xs">
+                            Please enter your login and password!
+                        </p>
+
+                        <form
+                            [formGroup]="loginForm"
+                            (ngSubmit)="submitLogin()"
+                        >
+                            <div class="mb-4 flex flex-col">
+                                <input
+                                    formControlName="email"
+                                    type="email"
+                                    class="rounded text-black px-2"
+                                />
+                                <label class="" for="email">Email</label>
+                                <p
+                                    *ngIf="
+                                        this.loginForm.get('email')?.invalid &&
+                                        this.loginForm.get('email')?.touched
+                                    "
+                                >
+                                    <small class="text-red-800"
+                                        >Email is required</small
+                                    >
+                                </p>
+                            </div>
+
+                            <div class="mb-4 flex flex-col">
+                                <input
+                                    formControlName="password"
+                                    type="password"
+                                    class="rounded text-black px-2"
+                                />
+                                <label class="form-label" for="password"
+                                    >Password</label
+                                >
+                                <p
+                                    *ngIf="
+                                        this.loginForm.get('password')
+                                            ?.invalid &&
+                                        this.loginForm.get('password')?.touched
+                                    "
+                                >
+                                    <small class="text-red-700"
+                                        >Password is required (min. length =
+                                        8)</small
+                                    >
+                                </p>
+                            </div>
+                            <button
+                                [disabled]="loginForm.invalid"
+                                class="px-6 pt-1 border rounded border-neutral-400"
+                                type="submit"
+                            >
+                                Login
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <p class="mb-0 text-xs">
+                            Don't have an account?
+                            <a
+                                routerLink="registration"
+                                class="text-xs font-bold text-neutral-500"
+                                >Sign Up</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

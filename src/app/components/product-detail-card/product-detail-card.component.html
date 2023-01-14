@@ -1,0 +1,40 @@
+<div class="max-w-7xl flex gap-x-5 m-auto">
+    <div class="img flex-1">
+        <img class="max-h-72 m-auto h-full" [src]="product?.image" alt="" />
+    </div>
+    <div class="product flex-1">
+        <h2 class="font-bold">{{ product?.title }}</h2>
+        <h3 class="font-semibold">{{ product?.price | currency }}</h3>
+        <div class="product-options mt-5">
+            <div class="color">
+                <p class="text-xs font-semibold">Color: {{ 'Orange' }}</p>
+                <input
+                    class="mr-2 color w-5 h-5 rounded-full border p-0.5 bg-orange-600"
+                    type="button"
+                />
+                <input
+                    class="color w-5 h-5 rounded-full border p-0.5 bg-pink-600"
+                    type="button"
+                />
+            </div>
+            <div class="quantity mt-5">
+                <label for="quantity" class="block font-semibold text-xs mb-3"
+                    >Quantity</label
+                >
+                <input
+                    name="quantity"
+                    class="px-2 pt-1 w-16 border-2 rounded-sm border-gray-400"
+                    type="number"
+                    min="1"
+                    [defaultValue]="1"
+                />
+            </div>
+            <button
+                mat-flat-button
+                class="my-5 max-w-xs font-extralight text-xs !w-full !bg-black !text-white hover:!bg-slate-800"
+            >
+                Add To Cart
+            </button>
+        </div>
+    </div>
+</div>
